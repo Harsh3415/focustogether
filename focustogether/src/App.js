@@ -10,9 +10,13 @@ const MY_ID = params.get("user") || "user1";
 
 const PARTNER_ID = MY_ID === "user1" ? "user2" : "user1";
 
-// 👇 KEY CHANGE
-const PARTNER_NAME = MY_ID === "user1" ? "Baby" : "Deepa";
-const MY_NAME = MY_ID === "user2" ? "Harsh" : "Baby";
+// 👇 REAL NAMES (optional use)
+const MY_NAME = MY_ID === "user1" ? "Harsh" : "Deepa";
+const PARTNER_NAME = MY_ID === "user1" ? "Deepa" : "Harsh";
+
+// 👇 DISPLAY LOGIC (FINAL FIX)
+const DISPLAY_NAME = MY_NAME;              // shows own real name
+const PARTNER_DISPLAY_NAME = "Baby";      // always show partner as Baby
 // ─────────────────────────────────────────────────────────────
 
 const DAILY_GOAL_MIN = 120;
