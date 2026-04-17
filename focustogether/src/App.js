@@ -5,13 +5,10 @@ import { ref, set, onValue, push } from "firebase/database";
 // ─────────────────────────────────────────────────────────────
 //  CONFIG — each person edits only these 4 lines
 // ─────────────────────────────────────────────────────────────
-const params = new URLSearchParams(window.location.search);
-const MY_ID = params.get("user") || "user1";
-
-const PARTNER_ID = MY_ID === "user1" ? "user2" : "user1";
-
-const MY_NAME = MY_ID === "user1" ? "Harsh" : "Deepa";
-const PARTNER_NAME = MY_ID === "user1" ? "Deepa" : "Harsh";
+const MY_ID        = "user1";    // "user1" = Harsh,  "user2" = her
+const PARTNER_ID   = "user2";
+const MY_NAME      = "Harsh";
+const PARTNER_NAME = "Baby";
 // ─────────────────────────────────────────────────────────────
 
 const DAILY_GOAL_MIN = 120;
