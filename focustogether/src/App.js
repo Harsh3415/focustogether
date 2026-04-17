@@ -4,8 +4,9 @@ import { ref, set, onValue } from "firebase/database";
 
 // ─────────────────────────────────────────
 // CONFIG — change these two lines only
-const MY_ID = "user1";       // your ID
-const PARTNER_ID = "user2";  // partner's ID
+const params = new URLSearchParams(window.location.search);
+const MY_ID = params.get("user") || "user1";
+const PARTNER_ID = MY_ID === "user1" ? "user2" : "user1";
 // ─────────────────────────────────────────
 
 const DAILY_GOAL_MINUTES = 120;
