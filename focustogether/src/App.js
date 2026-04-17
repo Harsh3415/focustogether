@@ -50,33 +50,46 @@ function timeAgo(iso) {
 // ── Particle Canvas ──────────────────────────────────────────
 function ParticleBurst({ active, onDone }) {
   const canvasRef = useRef(null);
+
   useEffect(() => {
     if (!active) return;
     const canvas = canvasRef.current;
     if (!canvas) return;
+
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+
     const particles = Array.from({ length: 90 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height * 0.7,
       vx: (Math.random() - 0.5) * 5,
       vy: Math.random() * -4 - 0.5,
       size: Math.random() * 9 + 3,
-      color: ["#f43f5e","#fb7185","#fda4af","#fbbf24","#f9a8d4","#c084fc","#e879f9"][Math.floor(Math.random()*7)],
+      color: ["#f43f5e", "#fb7185", "#fda4af", "#fbbf24", "#f9a8d4", "#c084fc", "#e879f9"][Math.floor(Math.random() * 7)],
       alpha: 1,
       heart: Math.random() > 0.4,
     }));
-    let raf, done = false;
+
+    let raf;
+    let done = false;
+
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       let alive = 0;
-      particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy; p.vy += 0.05; p.alpha -= 0.011;
+
+      particles.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.05;
+        p.alpha -= 0.011;
+
         if (p.alpha <= 0) return;
+
         alive++;
         ctx.globalAlpha = p.alpha;
         ctx.fillStyle = p.color;
+
         if (p.heart) {
           ctx.font = `${p.size * 3}px serif`;
           ctx.fillText("♥", p.x, p.y);
@@ -86,15 +99,28 @@ function ParticleBurst({ active, onDone }) {
           ctx.fill();
         }
       });
+
       ctx.globalAlpha = 1;
+
       if (alive > 0) raf = requestAnimationFrame(draw);
-      else if (!done) { done = true; onDone(); }
+      else if (!done) {
+        done = true;
+        onDone();
+      }
     }
+
     raf = requestAnimationFrame(draw);
     return () => cancelAnimationFrame(raf);
-  }, [active]);
+  }, [active, onDone]);
+
   if (!active) return null;
-  return <canvas ref={canvasRef} style={{ position:"fixed",inset:0,pointerEvents:"none",zIndex:9999 }} />;
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 9999 }}
+    />
+  );
 }
 
 // ── Love Popup ───────────────────────────────────────────────
