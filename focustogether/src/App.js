@@ -515,7 +515,7 @@ export default function App() {
               <span style={{ fontSize:14,color:"#f43f5e",animation:"pulse 1.5s ease infinite 0.4s" }}>♥</span>
             </div>
             <p style={{ fontSize:11,color:"#334155",letterSpacing:"0.14em",textTransform:"uppercase" }}>
-              {MY_NAME} & {PARTNER_NAME}
+              {DISPLAY_NAME} & {PARTNER_DISPLAY_NAME}
             </p>
           </div>
 
@@ -539,8 +539,8 @@ export default function App() {
             {/* Timer cards */}
             <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:"1rem" }}>
               {[
-                { name:MY_NAME,      time:myTime,      status:myStatus,      goal:myGoal      },
-                { name:PARTNER_NAME, time:partnerTime, status:partnerStatus, goal:partnerGoal },
+                { name:DISPLAY_NAME,      time:myTime,      status:myStatus,      goal:myGoal      },
+                { name:PARTNER_DISPLAY_NAME, time:partnerTime, status:partnerStatus, goal:partnerGoal },
               ].map(({ name, time, status, goal }, i) => (
                 <div key={i} style={{
                   background:"rgba(255,255,255,0.03)",
