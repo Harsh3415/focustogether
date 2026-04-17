@@ -92,7 +92,7 @@ function ParticleBurst({ active, onDone }) {
     }
     raf = requestAnimationFrame(draw);
     return () => cancelAnimationFrame(raf);
-  }, [onDone, active]);
+  }, [active]);
   if (!active) return null;
   return <canvas ref={canvasRef} style={{ position:"fixed",inset:0,pointerEvents:"none",zIndex:9999 }} />;
 }
