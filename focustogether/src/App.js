@@ -103,30 +103,66 @@ function LovePopup({ msg, from, onClose }) {
     if (!msg) return;
     const t = setTimeout(onClose, 7000);
     return () => clearTimeout(t);
-  }, [msg]);
+  }, [msg, onClose]);
+
   if (!msg) return null;
+
   return (
-    <div onClick={onClose} style={{
-      position:"fixed",inset:0,zIndex:9998,display:"flex",
-      alignItems:"center",justifyContent:"center",
-      background:"rgba(0,0,0,0.7)",backdropFilter:"blur(10px)",
-      animation:"fadeIn 0.3s ease",
-    }}>
-      <div style={{
-        background:"linear-gradient(145deg,#1a0426,#2d0a20,#1a0426)",
-        border:"1px solid rgba(244,63,94,0.5)",borderRadius:28,
-        padding:"2.5rem 2rem",textAlign:"center",maxWidth:360,width:"90%",
-        boxShadow:"0 0 80px rgba(244,63,94,0.35),0 0 160px rgba(244,63,94,0.1)",
-        animation:"popIn 0.5s cubic-bezier(0.34,1.56,0.64,1)",
-      }}>
-        <div style={{ fontSize:36, marginBottom:16 }}>💌</div>
-        <div style={{ fontSize:12,color:"#f9a8d4",marginBottom:14,letterSpacing:"0.1em",textTransform:"uppercase" }}>
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 9998,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "rgba(0,0,0,0.7)",
+        backdropFilter: "blur(10px)",
+        animation: "fadeIn 0.3s ease",
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "linear-gradient(145deg,#1a0426,#2d0a20,#1a0426)",
+          border: "1px solid rgba(244,63,94,0.5)",
+          borderRadius: 28,
+          padding: "2.5rem 2rem",
+          textAlign: "center",
+          maxWidth: 360,
+          width: "90%",
+          boxShadow:
+            "0 0 80px rgba(244,63,94,0.35),0 0 160px rgba(244,63,94,0.1)",
+          animation: "popIn 0.5s cubic-bezier(0.34,1.56,0.64,1)",
+        }}
+      >
+        <div style={{ fontSize: 36, marginBottom: 16 }}>💌</div>
+        <div
+          style={{
+            fontSize: 12,
+            color: "#f9a8d4",
+            marginBottom: 14,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+          }}
+        >
           from {from}
         </div>
-        <div style={{ fontFamily:"'Lora',serif",fontSize:22,color:"white",lineHeight:1.5,marginBottom:20 }}>
+        <div
+          style={{
+            fontFamily: "'Lora',serif",
+            fontSize: 22,
+            color: "white",
+            lineHeight: 1.5,
+            marginBottom: 20,
+          }}
+        >
           {msg}
         </div>
-        <div style={{ fontSize:11,color:"rgba(255,255,255,0.25)" }}>tap to close</div>
+        <div style={{ fontSize: 11, color: "rgba(255,255,255,0.25)" }}>
+          tap to close
+        </div>
       </div>
     </div>
   );
