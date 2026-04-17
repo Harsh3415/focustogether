@@ -12,7 +12,7 @@ const PARTNER_ID = MY_ID === "user1" ? "user2" : "user1";
 
 // 👇 KEY CHANGE
 const PARTNER_NAME = MY_ID === "user1" ? "Baby" : "Deepa";
-const MY_NAME = MY_ID === "user1" ? "Harsh" : "Baby";
+const MY_NAME = MY_ID === "user2" ? "Harsh" : "Baby";
 // ─────────────────────────────────────────────────────────────
 
 const DAILY_GOAL_MIN = 120;
